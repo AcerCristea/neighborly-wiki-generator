@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ settlement_name }}</title>
+</head>
+
+<body>
+    <h1>{{ settlement_name }}</h1>
+    <div>
+        <div>Population: {{ population }}</div>
+    </div>
+    <h2>Description</h2>
+    <div>
+        <p>
+            {{ discription }}
+        </p>
+    </div>
+
+    <h2>Districts</h2>
+    <div>
+        <ul>
+            {% for item in districts %}
+            <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

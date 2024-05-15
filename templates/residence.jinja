@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ residence_name }}</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{ residence_name }}</h1>
+
+    <div>District:<a href="{{district[1]}}">{{district[0]}}</a></div>
+    <div>Status: {{ activity_status }}</div>
+
+    <h2>Traits</h2>
+    <table>
+        <tr>
+            <th>Trait</th>
+            <th>Description</th>
+        </tr>
+        {% for trait in traits %}
+        <tr>
+            <td>{{ trait["name"] }}</td>
+            <td>{{ trait["description"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Residential Units</h2>
+    <table>
+        <tr>
+            <th>Unit #</th>
+            <th>Residents</th>
+        </tr>
+
+        {% for unit in units %}
+        <tr>
+            <td>{{ unit["number"] }}</td>
+            <td>
+                {% for resident in unit["residents"] %}
+                <a href="{{resident[1]}}">{{resident[0]}}</a>,
+                {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>

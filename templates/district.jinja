@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ district_name }}</title>
+</head>
+
+<body>
+    <h1>{{ district_name }}</h1>
+
+    <div>
+        <div>Settlement: <a href="{{settlement[1]}}">{{settlement[0]}}</a></div>
+        <div>Population: {{ population }}</div>
+    </div>
+
+    <h2>Description</h2>
+    <div>
+        <p>A district within {{ settlement_name }}. {{ description }}</p>
+    </div>
+
+    <h2>Residential Buildings</h2>
+    <div>
+        <ul>
+            {% for item in residences %}
+            <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>Active Businesses</h2>
+    <div>
+        <ul>
+            {% for item in businesses %}
+            <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>Active Residents</h2>
+    <div>
+        <ul>
+            {% for item in residents %}
+            <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>

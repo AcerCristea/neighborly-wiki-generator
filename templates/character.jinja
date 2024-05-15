@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ character_name }}</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{ character_name }}</h1>
+
+    <div>Status: {{ activity_status }}</div>
+    <div>Age: {{ age }} ({{ life_stage }})</div>
+    <div>Sex: {{ sex }}</div>
+    <div>Species: {{ species }}</div>
+    <div>Lives at: <a href="{{ residence_link }}">{{ residence_name }}</a></div>
+    <div>Works at: <a href="{{ occupation_link }}">{{ occupation_name }}</a></div>
+
+    <h2>Frequented Locations</h2>
+    <div>
+        <ul>
+            {% for item in frequented_locations %}
+            <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>Traits</h2>
+    <table>
+        <tr>
+            <th>Trait</th>
+            <th>Description</th>
+        </tr>
+        {% for trait in traits %}
+        <tr>
+            <td>{{ trait["name"] }}</td>
+            <td>{{ trait["description"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Skills</h2>
+    <table>
+        <tr>
+            <th>Skill</th>
+            <th>Level</th>
+            <th>Description</th>
+        </tr>
+        {% for entry in skills %}
+        <tr>
+            <td>{{ entry["name"] }}</td>
+            <td>{{ entry["level"] }}</td>
+            <td>{{ entry["description"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Relationships</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Target</th>
+                <th>Reputation</th>
+                <th>Romance</th>
+                <th>Compatibility</th>
+                <th>Romantic Compatibility</th>
+                <th>Traits</th>
+            </tr>
+            {% for relationship in relationships %}
+            <tr>
+                <td><a href="{{ relationship["target_link"] }}">{{ relationship["target_name"] }}</a></td>
+                <td>{{ relationship["reputation"] }}</td>
+                <td>{{ relationship["romance"] }}</td>
+                <td>{{ relationship["compatibility"] }}</td>
+                <td>{{ relationship["romantic_compatibility"] }}</td>
+                <td>
+                    {% for trait in relationship["traits"] %}
+                        {{trait["name"]}},
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <h2>Event History</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+            {% for entry in events %}
+            <tr>
+                <td>{{ entry["timestamp"] }}</td>
+                <td>{{ entry["description"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

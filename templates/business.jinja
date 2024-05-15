@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ business_name }}</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>{{ business_name }}</h1>
+
+    <div>District: <a href="{{district_link}}">{{district_name}}</a></div>
+    <div>Status: {{ activity_status }}</div>
+    <div>Owner: <a href="{{owner_link}}">{{owner_name}}</a></div>
+    <div>Owner Role: {{ owner_role }}</div>
+
+    <h2>Frequented By</h2>
+    <div>
+        <ul>
+            {% for item in frequented_by %}
+            <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <h2>Traits</h2>
+    <table>
+        <tr>
+            <th>Trait</th>
+            <th>Description</th>
+        </tr>
+        {% for trait in traits %}
+        <tr>
+            <td>{{ trait["name"] }}</td>
+            <td>{{ trait["description"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Employees</h2>
+    <table>
+        <tr>
+            <th>Employee</th>
+            <th>Role</th>
+        </tr>
+        {% for entry in employees %}
+        <tr>
+            <td><a href="{{entry["link"]}}">{{entry["name"]}}</a></td>
+            <td>{{entry["role_name"]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Event History</h2>
+    <div>
+        <table>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+            {% for entry in events %}
+            <tr>
+                <td>{{ entry["timestamp"] }}</td>
+                <td>{{ entry["description"] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Simulation Wiki</title>
+    </head>
+
+    <body>
+        <h1>Simulation Wiki</h1>
+
+        <h2>Settlements</h2>
+        <div>
+            <ul>
+                {% for item in settlements %}
+                <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2>Districts</h2>
+        <div>
+            <ul>
+                {% for item in districts %}
+                <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2>Businesses</h2>
+        <div>
+            <ul>
+                {% for item in businesses %}
+                <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h2>Characters</h2>
+        <div>
+            <ul>
+                {% for item in characters %}
+                <li><a href="{{item[1]}}">{{item[0]}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- <h2>Traits</h2>
+        <div>
+            <ul>
+                <li><a href="#">Trait 1</a></li>
+                <li><a href="#">Trait 2</a></li>
+                <li><a href="#">Trait 3</a></li>
+            </ul>
+        </div>
+
+        <h2>Skills</h2>
+        <div>
+            <ul>
+                <li><a href="#">Skill 1</a></li>
+                <li><a href="#">Skill 2</a></li>
+                <li><a href="#">Skill 3</a></li>
+            </ul>
+        </div> -->
+    </body>
+</html>
