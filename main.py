@@ -24,6 +24,7 @@ from neighborly.components.skills import Skills
 from neighborly.components.traits import Traits
 from neighborly.components.shared import Age
 from neighborly.components.relationship import Relationships, Reputation, Romance
+from neighborly.life_event import PersonalEventHistory
 import jinja2
 
 TEMPLATES_DIR = pathlib.Path(__file__).parent / "templates"
@@ -168,6 +169,16 @@ def generate_business_page(sim: Simulation, gameobject: GameObject) -> None:
     # Get event data
     events: list[dict[str, Any]] = []
 
+    personal_history = gameobject.get_component(PersonalEventHistory).history
+    for event in personal_history:
+
+        event_timestamp = event.timestamp.to_iso_str()
+        event_description = str(event)
+        events.append(
+            {"timestamp": event_timestamp, "description": event_description}
+        )
+
+
     template = JINJA_ENV.get_template("business.jinja")
     rendered_page = template.render(
         business_name=business_name,
@@ -264,6 +275,17 @@ def generate_character_page(sim: Simulation, gameobject: GameObject) -> None:
 
     # Get event data
     events: list[dict[str, Any]] = []
+
+    personal_history = gameobject.get_component(PersonalEventHistory).history
+    for event in personal_history:
+
+        event_timestamp = event.timestamp.to_iso_str()
+        event_description = str(event)
+        events.append(
+            {"timestamp": event_timestamp, "description": event_description}
+        )
+
+
 
     template = JINJA_ENV.get_template("character.jinja")
     rendered_page = template.render(
