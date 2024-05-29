@@ -17,7 +17,7 @@ from neighborly.ecs import GameObject
 from neighborly.config import SimulationConfig, LoggingConfig
 from neighborly.plugins import default_content
 from neighborly.components.settlement import Settlement, District
-from neighborly.components.character import Character, MemberOfHousehold, Species
+from neighborly.components.character import Character, MemberOfHousehold, Species, Household
 from neighborly.components.business import Business, Occupation
 from neighborly.components.location import FrequentedLocations, CurrentSettlement, CurrentDistrict
 from neighborly.components.skills import Skills
@@ -87,6 +87,18 @@ def generate_trait_page(sim: Simulation, gameobject: GameObject) -> None:
     """Generate a page for a residential building."""
     raise NotImplementedError()
 
+
+def generate_clan_page(sim:Simulation, gameobject: GameObject) -> None:
+    
+    return
+
+def generate_family_page(sim:Simulation, gameobject: GameObject) -> None:
+    
+    return
+
+def generate_household_page(sim:Simulation, gameobject: GameObject) -> None:
+    
+    return
 
 def generate_residence_page(sim: Simulation, gameobject: GameObject) -> None:
     """Generate a page for a residential building."""
@@ -465,6 +477,8 @@ def main() -> None:
 
         elif gameobject.has_component(Business):
            generate_business_page(sim, gameobject)
+
+    
 
     # Create the home page
     generate_home_page(sim)
