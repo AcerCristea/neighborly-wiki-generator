@@ -71,8 +71,6 @@
                 <th>Target</th>
                 <th>Reputation</th>
                 <th>Romance</th>
-                <th>Compatibility</th>
-                <th>Romantic Compatibility</th>
                 <th>Traits</th>
             </tr>
             {% for relationship in relationships %}
@@ -80,8 +78,6 @@
                 <td><a href="{{ relationship["target_link"] }}">{{ relationship["target_name"] }}</a></td>
                 <td>{{ relationship["reputation"] }}</td>
                 <td>{{ relationship["romance"] }}</td>
-                <td>{{ relationship["compatibility"] }}</td>
-                <td>{{ relationship["romantic_compatibility"] }}</td>
                 <td>
                     {% for trait in relationship["traits"] %}
                         {{trait["name"]}},
